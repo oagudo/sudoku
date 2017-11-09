@@ -1,7 +1,10 @@
 package model
 
-class Board() {
+sealed trait Position
+case class Empty() extends Position
+case class Fill(n : Short) extends Position
 
-  val positions = Array.ofDim[Short](9, 9)
+class Board() {
+  val positions = Array.ofDim[Empty](9, 9)
 
 }
