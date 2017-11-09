@@ -12,7 +12,6 @@ class BoardTest extends FunSpec with Checkers with Matchers {
     }
   }
 
-
   describe("A Cell") {
 
     it("can be empty") {
