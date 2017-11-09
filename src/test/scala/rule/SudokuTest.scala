@@ -9,7 +9,7 @@ class SudokuTest extends FunSpec with Checkers with Matchers {
 
     it("is valid when all board cells are empty") {
       val b = new Board()
-      assert(Sudoku(b).isValid())
+      assert(Sudoku.isValid(b))
     }
   }
 }
