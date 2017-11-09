@@ -26,5 +26,11 @@ class Board() {
     return cells(p.x)(p.y)
   }
 
+  def getRow(r : Int) : List[Cell] = {
+    (0 until 9).map(c => getCell(Position(r, c))).toList
+  }
 
+  def getCol(c : Int) : List[Cell] = {
+    (0 until 9).map(r => getCell(Position(r, c))).toList
+  }
 }

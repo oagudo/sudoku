@@ -2,34 +2,32 @@ package rule
 
 import model._
 
+private object NonRepeatedInLineRule {
+
+  def apply(b : Board, extractLineFun : (Board, Int) => List[Cell]): Boolean = {
+
+    val lines = for {
+      line <- 0 until 9
+    } yield extractLineFun(b, line).collect {case c : Fill => c}
+
+    lines.forall(l => l.toSet.size == l.size) // all are uniques
+  }
+}
+
+private object RowRule {
+  def apply(b : Board): Boolean = {
+    NonRepeatedInLineRule(b, { (b,r) => b.getRow(r) })
+  }
+}
+
+private object ColRule {
+  def apply(b : Board): Boolean = {
+    NonRepeatedInLineRule(b, { (b,c) => b.getCol(c) })
+  }
+}
+
 object Sudoku {
-
-  def isValid(b : Board) : Boolean = {
-
-    def getFilledRowCells(row : Int) : List[Fill] = {
-      val rowCells = (0 until 9).map(col => b.getCell(Position(row, col)))
-      rowCells.collect {case c : Fill => c}.toList
-    }
-
-    def getFilledColCells(col : Int) : List[Fill] = {
-      val colCells = (0 until 9).map(row => b.getCell(Position(row, col)))
-      colCells.collect {case c : Fill => c}.toList
-    }
-
-    val rows = for {
-      row <- 0 until 9
-    } yield getFilledRowCells(row)
-
-    if (!rows.forall(r => r.toSet.size == r.size))
-      return false
-
-    val columns = for {
-      col <- 0 until 9
-    } yield getFilledColCells(col)
-
-    if (!columns.forall(c => c.toSet.size == c.size))
-      return false
-
-    return true
+  def apply(b : Board) : Boolean = {
+      RowRule(b) && ColRule(b)
   }
 }
