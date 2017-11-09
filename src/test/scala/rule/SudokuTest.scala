@@ -31,5 +31,12 @@ class SudokuTest extends FunSpec with Checkers with Matchers {
       b.setCell(Fill(7), Position(1, 0))
       assert(Sudoku(b) == false)
     }
+
+    it("should be invalid if two filled cells are repeated in a small square") {
+      val b = new Board()
+      b.setCell(Fill(7), Position(0, 0))
+      b.setCell(Fill(7), Position(1, 1))
+      assert(Sudoku(b) == false)
+    }
   }
 }
