@@ -11,4 +11,10 @@ class BoardTest extends FunSpec with Checkers {
       s.positions
     }
   }
+
+  describe("A Position") {
+    it("can be empty") {
+      val p = Empty()
+    }
+  }
 }
