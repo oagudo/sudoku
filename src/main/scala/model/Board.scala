@@ -5,17 +5,21 @@ case class Position(x : Int, y : Int) {
 }
 
 sealed trait Cell
+
 case class Empty() extends Cell
 case class Fill(n : Short) extends Cell {
   require(n >= 1 && n <= 9)
 }
 
 class Board() {
-  private val cells = Array.ofDim[Cell](9, 9)
+
+  private val dimension = 9
+
+  private val cells = Array.ofDim[Cell](dimension, dimension)
 
   val positions = for {
-    x <- 0 until 9
-    y <- 0 until 9
+    x <- 0 until dimension
+    y <- 0 until dimension
   } yield Position(x, y)
 
   positions.foreach(setCell(Empty(), _))
@@ -29,11 +33,11 @@ class Board() {
   }
 
   def getRow(r : Int) : List[Cell] = {
-    (0 until 9).map(c => getCell(Position(r, c))).toList
+    (0 until dimension).map(c => getCell(Position(r, c))).toList
   }
 
   def getCol(c : Int) : List[Cell] = {
-    (0 until 9).map(r => getCell(Position(r, c))).toList
+    (0 until dimension).map(r => getCell(Position(r, c))).toList
   }
 
   def getSquares() : List[List[Cell]] = {

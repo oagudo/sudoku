@@ -20,7 +20,7 @@ private object NonRepeatedInRowRule {
   }
 }
 
-private object NonRepeatedInCol {
+private object NonRepeatedInColRule {
   def apply(b : Board): Boolean = {
     NonRepeatedInLineRule(b, { (b,c) => b.getCol(c) })
   }
@@ -41,7 +41,7 @@ object Sudoku {
   def apply(b : Board) : Boolean = {
 
       NonRepeatedInRowRule(b) &&
-      NonRepeatedInCol(b) &&
+      NonRepeatedInColRule(b) &&
       NonRepeatedInSmallSquare(b)
 
   }
