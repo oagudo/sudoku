@@ -12,6 +12,12 @@ class SudokuTest extends FunSpec with Checkers with Matchers {
       assert(Sudoku.isValid(b))
     }
 
+    it("should be valid all filled cells are unique in the same in a row") {
+      val b = new Board()
+      b.setCell(Fill(1), Position(0, 0))
+      assert(Sudoku.isValid(b))
+    }
+
     it("should be invalid when two numbers are the same in a row") {
       val b = new Board()
       b.setCell(Fill(1), Position(0, 0))
