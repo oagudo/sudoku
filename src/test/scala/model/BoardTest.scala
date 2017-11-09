@@ -42,9 +42,9 @@ class BoardTest extends FunSpec with Checkers with Matchers {
       assert(squares(3)(8) == Fill(6))
 
       // Nineth small square
-      assert(squares(8)(0) == Fill(6))
-      assert(squares(8)(4) == Fill(7))
-      assert(squares(8)(8) == Fill(8))
+      assert(squares(8)(0) == Fill(7))
+      assert(squares(8)(4) == Fill(8))
+      assert(squares(8)(8) == Fill(9))
     }
   }
 

@@ -1,6 +1,8 @@
 package model
 
-case class Position(x : Int, y : Int)
+case class Position(x : Int, y : Int) {
+  def +(other : Position) = Position(x + other.x, y + other.y)
+}
 
 sealed trait Cell
 case class Empty() extends Cell
@@ -33,4 +35,20 @@ class Board() {
   def getCol(c : Int) : List[Cell] = {
     (0 until 9).map(r => getCell(Position(r, c))).toList
   }
+
+  def getSquares() : List[List[Cell]] = {
+
+    val startOfSmallSquarePositions = for {
+      r <- (0 until 3)
+      c <- (0 until 3)
+    } yield Position(r * 3, c * 3)
+
+    val squarePos = for {
+      r <- (0 until 3)
+      c <- (0 until 3)
+    } yield Position(r, c)
+
+    startOfSmallSquarePositions.toList.map(start => squarePos.map(p => getCell(start + p)).toList)
+  }
+
 }
