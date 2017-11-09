@@ -29,8 +29,11 @@ private object NonRepeatedInCol {
 private object NonRepeatedInSmallSquare {
 
   def apply(b : Board): Boolean = {
-    true
-
+    val squares = b.getSquares()
+    squares.forall(s => {
+      val filledCells = s.collect {case c : Fill => c}
+      filledCells.toSet.size == filledCells.size // all are uniques
+    } )
   }
 }
 
