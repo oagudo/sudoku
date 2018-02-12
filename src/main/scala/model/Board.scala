@@ -1,6 +1,9 @@
 package model
 
 case class Position(x : Int, y : Int) {
+  require((0 until 9).contains(x))
+  require((0 until 9).contains(y))
+
   def +(other : Position) = Position(x + other.x, y + other.y)
 }
 
