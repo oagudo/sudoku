@@ -46,6 +46,34 @@ class BoardTest extends FunSpec with Checkers with Matchers {
       assert(squares(8)(4) == Fill(8))
       assert(squares(8)(8) == Fill(9))
     }
+
+    it("should be equal to an empty board if empty") {
+      val b = new Board()
+      val other = new Board()
+      assert(b == other)
+    }
+
+    it("should be equal to an non empty board if cells are equals") {
+      val b = new Board()
+      b.setCell(Fill(8), Position(1,2))
+      b.setCell(Fill(2), Position(7,2))
+
+      val other = new Board()
+      other.setCell(Fill(8), Position(1,2))
+      other.setCell(Fill(2), Position(7,2))
+
+      assert(b == other)
+    }
+
+    it("should be not equal to an non empty board if cells are not equals") {
+      val b = new Board()
+      b.setCell(Fill(1), Position(1,2))
+
+      val other = new Board()
+      other.setCell(Fill(8), Position(1,2))
+
+      assert(b != other)
+    }
   }
 
   describe("A Cell") {

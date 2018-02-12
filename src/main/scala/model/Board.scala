@@ -58,4 +58,18 @@ class Board() {
     startOfSmallSquarePositions.toList.map(start => squarePos.map(p => getCell(start + p)).toList)
   }
 
+  def canEqual(a: Any) = a.isInstanceOf[Board]
+
+  override def equals(that: Any): Boolean = {
+    that match {
+      case that: Board => that.canEqual(this) && this.hashCode == that.hashCode
+      case _ => false
+    }
+  }
+
+  override def hashCode: Int = {
+    // Array hashcodes do not take elements into account
+    return cells.map(_.toVector).toVector.##
+  }
+
 }
