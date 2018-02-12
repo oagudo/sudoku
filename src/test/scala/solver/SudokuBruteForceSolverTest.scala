@@ -1,6 +1,6 @@
 package rule
 
-import inout.{SudokuPrinter, SudokuReader}
+import inout.SudokuReader
 import org.scalatest.prop.Checkers
 import org.scalatest.{FunSpec, Matchers}
 import solver.SudokuBruteForceSolver
@@ -60,8 +60,6 @@ class SudokuBruteForceSolverTest extends FunSpec with Checkers with Matchers {
       val b = SudokuReader.read(sudoku)
 
       SudokuBruteForceSolver.solve(b)
-
-      SudokuPrinter.print(b)
 
       val solution = """5  3  9     7  6  1     2  8  4
                        |4  2  8     5  3  9     6  1  7
