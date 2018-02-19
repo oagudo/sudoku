@@ -81,18 +81,6 @@ class SudokuBruteForceSolverTest extends FunSpec with Checkers with Matchers {
 
     it("solves a difficult sudoku") {
 
-      val empty =  """?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?
-                      |?  ?  ?     ?  ?  ?     ?  ?  ?""".stripMargin
-
       val sudoku =  """?  ?  ?     ?  ?  ?     4  ?  ?
                       |5  9  ?     ?  ?  ?     ?  ?  3
                       |?  ?  1     9  ?  ?     ?  7  ?
@@ -109,17 +97,17 @@ class SudokuBruteForceSolverTest extends FunSpec with Checkers with Matchers {
 
       SudokuBruteForceSolver.solve(b)
 
-      val solution = """7  6  8   3  1  2   4  5  9
-                       |5  9  4   6  8  7   1  2  3
-                       |2  3  1   9  4  5   8  7  6
+      val solution = """7  6  8     3  1  2     4  5  9
+                       |5  9  4     6  8  7     1  2  3
+                       |2  3  1     9  4  5     8  7  6
                        |
-                       |8  2  6   5  3  1   9  4  7
-                       |4  7  9   2  6  8   3  1  5
-                       |1  5  3   7  9  4   6  8  2
+                       |8  2  6     5  3  1     9  4  7
+                       |4  7  9     2  6  8     3  1  5
+                       |1  5  3     7  9  4     6  8  2
                        |
-                       |9  8  7   1  2  6   5  3  4
-                       |3  4  5   8  7  9   2  6  1
-                       |6  1  2   4  5  3   7  9  8""".stripMargin
+                       |9  8  7     1  2  6     5  3  4
+                       |3  4  5     8  7  9     2  6  1
+                       |6  1  2     4  5  3     7  9  8""".stripMargin
 
 
       val sudokuSolution = SudokuReader.read(solution)
@@ -145,17 +133,17 @@ class SudokuBruteForceSolverTest extends FunSpec with Checkers with Matchers {
 
       SudokuBruteForceSolver.solve(b)
 
-      val solution = """7  1  2    6  9  8    4  5  3
-                       |3  4  5    2  7  1    8  6  9
-                       |9  8  6    5  3  4    1  2  7
+      val solution = """7  1  2     6  9  8     4  5  3
+                       |3  4  5     2  7  1     8  6  9
+                       |9  8  6     5  3  4     1  2  7
                        |
-                       |5  9  8    4  2  3    7  1  6
-                       |6  7  1    8  5  9    3  4  2
-                       |2  3  4    1  6  7    9  8  5
+                       |5  9  8     4  2  3     7  1  6
+                       |6  7  1     8  5  9     3  4  2
+                       |2  3  4     1  6  7     9  8  5
                        |
-                       |4  5  9    3  1  2    6  7  8
-                       |8  6  7    9  4  5    2  3  1
-                       |1  2  3    7  8  6    5  9  4""".stripMargin
+                       |4  5  9     3  1  2     6  7  8
+                       |8  6  7     9  4  5     2  3  1
+                       |1  2  3     7  8  6     5  9  4""".stripMargin
 
 
       val sudokuSolution = SudokuReader.read(solution)
